@@ -74,4 +74,111 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readline = require("readline-sync");
 
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return null;
+    }
+    return a / b;
+}
+
+function modulus(a, b) {
+    if (b === 0) {
+        return null;
+    }
+    return a % b;
+}
+
+function exponent(a, b) {
+    return a ** b;
+}
+
+
+while (true) {
+
+    console.log("============================");
+    console.log("     SIMPLE CALCULATOR");
+    console.log("============================");
+    console.log("1. Addition");
+    console.log("2. Subtraction");
+    console.log("3. Multiplication");
+    console.log("4. Division");
+    console.log("5. Modulus");
+    console.log("6. Exponentiation");
+    console.log("7. Quit");
+
+    let choice = readline.question("Select an operation (1-7): ");
+
+    if (choice === "7") {
+        console.log("Goodbye!");
+        break;
+    }
+
+    if (!["1", "2", "3", "4", "5", "6"].includes(choice)) {
+        console.log("Invalid choice. Please select between 1 and 7.\n");
+        continue;
+    }
+
+    let num1 = Number(readline.question("Enter first number : "));
+    let num2 = Number(readline.question("Enter second number: "));
+
+    let result;
+
+    switch (choice) {
+
+        case "1":
+            result = add(num1, num2);
+            console.log(`Result: ${num1} + ${num2} = ${result.toFixed(2)}`);
+            break;
+
+        case "2":
+            result = subtract(num1, num2);
+            console.log(`Result: ${num1} - ${num2} = ${result.toFixed(2)}`);
+            break;
+
+        case "3":
+            result = multiply(num1, num2);
+            console.log(`Result: ${num1} * ${num2} = ${result.toFixed(2)}`);
+            break;
+
+        case "4":
+            result = divide(num1, num2);
+
+            if (result === null) {
+                console.log("Error: Cannot divide by zero.");
+            } else {
+                console.log(`Result: ${num1} / ${num2} = ${result.toFixed(2)}`);
+            }
+            break;
+
+        case "5":
+            result = modulus(num1, num2);
+
+            if (result === null) {
+                console.log("Error: Cannot divide by zero.");
+            } else {
+                console.log(`Result: ${num1} % ${num2} = ${result.toFixed(2)}`);
+            }
+            break;
+
+        case "6":
+            result = exponent(num1, num2);
+            console.log(`Result: ${num1} ** ${num2} = ${result.toFixed(2)}`);
+            break;
+    }
+
+    console.log();
+}
